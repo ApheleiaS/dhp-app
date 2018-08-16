@@ -1,5 +1,4 @@
 from flask import Flask
-from sheetsapi import Sheets
 
 app = Flask(__name__)
 
