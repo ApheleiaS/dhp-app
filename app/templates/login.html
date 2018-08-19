@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+
+{% block content %}
+<center>
+<div style="width:550px; border-width:2px;border-color:#FFFFFF; ">
+
+
+  Welcome Participant! Enter Your Information Here :
+  <form action="" method="post" name="login_participant">
+      {{ form.hidden_tag() }}
+      <p>
+          Name:
+          {{ form.username }}<br>
+          {% for error in form.username.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+          {% endfor %}<br>
+      </p>
+      <p>
+          Email:
+          {{ form.email }}<br>
+          {% for error in form.email.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+          {% endfor %}<br>
+      </p>
+      <p>
+          Age:
+          {{ form.age }}<br>
+          {% for error in form.age.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+          {% endfor %}<br>
+      </p>
+      <p>
+          Power in Left Eye (Enter with +/-):
+          {{ form.eyesightl }}<br>
+          {% for error in form.eyesightl.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+          {% endfor %}<br>
+      </p>
+      <p>
+          Power in Right Eye (Enter with +/-):
+          {{ form.eyesightr }}<br>
+          {% for error in form.eyesightr.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+          {% endfor %}<br>
+      </p>
+      <p>
+          Gender:
+          {{ form.gender }}<br>
+          {% for error in form.gender.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+          {% endfor %}<br>
+      </p>
+      <p>
+          Profession:
+          {{ form.profession }}<br>
+          {% for error in form.profession.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+          {% endfor %}<br>
+      </p>
+      <p><input type="submit" value="Sign In"></p>
+  </form>
+  </div>
+  </center>
+  
+{% endblock %}

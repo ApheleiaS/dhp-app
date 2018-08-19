@@ -1,0 +1,25 @@
+<html>
+  <head>
+    {% block head %}
+    {% endblock %}
+    {% if title %}
+    <title>{{ title }} - Cognitive Science Survey</title>
+    {% else %}
+    <title>Welcome to the Survey App!</title>
+    {% endif %}
+  </head>
+  <body style="background-color: gray;">
+    <!--<center><div style="background-color: gray; padding-top: 1px; padding-bottom: 2px;"><h3>Color</h3></div></center>-->
+    
+     {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <ul>
+        {% for message in messages %}
+            <li>{{ message }} </li>
+        {% endfor %}
+        </ul>
+      {% endif %}
+    {% endwith %}
+    {% block content %}{% endblock %}
+  </body>
+</html>

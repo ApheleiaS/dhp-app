@@ -1,0 +1,92 @@
+{% extends "base.html" %}
+{% block head %}
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='page.css') }}">
+<link rel="stylesheet"  type= "text/css" href= "{{ url_for('static',filename='w3.css') }}">
+<script src="{{url_for('static', filename='jscolor.js')}}"></script>
+<link rel="stylesheet"  type= "text/css" href= "{{ url_for('static',filename='colorpicker.css') }}">
+
+<script type="text/javascript">
+     function submitJS(){
+        var image = document.getElementById("ques-img").src;
+        var colorchoice = document.getElementById("valDisplay").innerHTML;
+        window.alert("Image: " + image + "Color Chosen:" + colorchoice);
+
+        //window.open("localhost/survey_one/{{next_question}}", "_self");
+     }
+
+     </script>
+<!-- This is for timeout of the question image> 
+<script type="text/javascript">
+
+window.onload=function(){setTimeout(function() {
+  document.getElementById('ques-img').style.visibility='hidden';
+  document.querySelector(".swatch").innerHTML="";
+
+}, 10*1000);}
+
+</script>
+-->
+
+{% endblock %}
+{% block content %}
+<form name="match-color" method="POST">
+<div style="text-align: center;" class="w3-row">
+  <!-- <div class="w3-col w3-container m6 l6">
+   --> 
+<center>
+
+<div style="padding-left:20px; padding-right: 20px;">Instruction : The image will disappear in 10 seconds. Look at it carefully and then choose the most dominant color that you saw. Then proceed to choose what the average color of the image according to you. </div><br/><br/>
+  
+  
+  <div class="w3-col w3-container m6 l6" id="">  
+  <img id="ques-img" src="{{image}}" style="width: " style="z-index: +2;"></img>
+  </div>
+  <div class="w3-col w3-container m6 l6" id="">  
+   <div class="swatch" style="background-color: hsla(170, 1%, 50%, 1);"> </div>
+  </div>  
+
+ 
+      <br/><br/><br/><br/><br/> 
+       <h3 style="visibility:hidden;"class="colorname">hsla color</h3> 
+
+    <form>
+      <h6>HUE</h6>
+      <div class="hue"><input class="colorpickerinputs" name="hue" type="range" min="1" max="300" value="130"></div>
+
+      <h6>SATURATION</h6>
+      <div class="satcolor" >
+        <div class="sat"><input class="colorpickerinputs" name="sat" type="range" min="1" max="100" value="100"></div>
+      </div>
+
+      <h6>LIGHT</h6>
+      <div class="light">
+      <input class="colorpickerinputs" name="light" type="range" min="1" max="100" value="55">
+      </div>
+      </form>
+
+</center>
+<!--<div class="w3-col w3-container m6 l6">-->
+
+<!--Have to add the JS script  at the end of the body-->
+<script src="{{url_for('static', filename='colorpicker.js')}}"></script>
+
+<br/> 
+<br/>
+<center>
+<input name="Submit" id="submitbutton" type="submit" value="Next" >
+</center>
+</div>
+<!--
+valueElement:'valDisplay'
+HexValue: <span id='valDisplay'></span>
+ --> 
+ <!-- </div>
+  <div class="w3-col w3-container m6 l6" id="Question">  
+  </div>
+ -->
+ 
+</form>
+
+
+{% endblock %}
