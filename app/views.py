@@ -38,7 +38,7 @@ def login():
 def logout():
     session['pid']=0
     session['username']=""
-    print session
+    print (session)
     return redirect('/login')
 
 
