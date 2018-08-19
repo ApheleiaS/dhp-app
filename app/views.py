@@ -1,4 +1,4 @@
-from flask import render_template, flash, redirect
+from flask import render_template, flash, redirect, request, url_for
 from app import app, db
 from .forms import ParticipantForm
 from .models import User, Answer
@@ -40,7 +40,7 @@ def logout():
   session['username']=""
   print session
   return redirect('/login')
-  
+
 
 @app.route('/index', methods=['GET', 'POST'])
 def index():
