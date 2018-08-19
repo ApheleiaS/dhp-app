@@ -36,20 +36,33 @@ def login():
 # put logout button on every page of the survey
 @app.route('/logout')
 def logout():
-  session['pid']=0
-  session['username']=""
-  print session
-  return redirect('/login')
+    session['pid']=0
+    session['username']=""
+    print session
+    return redirect('/login')
 
 
+# This page first collects favorite color data and gives instructions for THE SURVEY
+# and then asks you to begin the survey.
+@app.route('/', methods=['GET', 'POST'])
 @app.route('/index', methods=['GET', 'POST'])
 def index():
-	if request.method == 'POST':
-		favourite_color_chosen = request.form.get("favorite-color-chosen")
-		#Update Participant information in DB with favorite color 
-		participant = User.query.get(session["pid"])
-        participant.favorite_color = favourite_color_chosen
-        db.session.commit()
+	
+  #   if request.method == 'POST':
+	 #    # favourite_color_chosen = request.form.get("favorite-color-chosen")
+		# # Update Participant information in DB with favorite color 
+		# participant = User.query.get(session["pid"])
+  #       # print participant.username
+  #       # participant.favorite_color = favourite_color_chosen
+  #       # db.session.commit()
+  #       redirect(url_for(survey, question_num="1"))
+    message = "Hello"
+    if session["pid"] and session["username"]:
+        return render_template('index.html', message=message, title="Survey Home", 
+                               username=session['username'], pid=session['pid'])
+    else:
+        return redirect('/login') 
+
 
 
 @app.route('/survey/<question_num>', methods=['GET', 'POST'])
