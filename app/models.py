@@ -22,14 +22,20 @@ class User(db.Model):
        self.profession=profession
 
     def __repr__(self):
-        return '<User %r>' % (self.username)
+        return 'Id %r,Username %r,Age %r, Gender %r,FavColor %r' % ( self.id, self.username, self.age, self.gender, self.favorite_color)
 
 
 class Answer(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
-    question_id = db.Column(db.Integer)
+    question_id = db.Column(db.Integer, nullable=False)
     answer_text =  db.Column(db.Text, nullable=False)
+
+    def __init__(self, u_id, q_id, answer_text):
+        self.user_id = u_id
+        self.question_id = q_id
+        self.answer_text = answer_text
+
     def __repr__(self):
-        return '<Answer %r>' % (self.answer_text)
+        return 'User %r,Question %r,Answer %r' % (self.user_id, self.question_id, self.answer_text)
 
