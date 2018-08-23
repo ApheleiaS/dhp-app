@@ -16,7 +16,7 @@
      }
 
      </script>
-<!-- This is for timeout of the question image> 
+<!-- This is for timeout of the question image--> 
 <script type="text/javascript">
 
 window.onload=function(){setTimeout(function() {
@@ -26,11 +26,11 @@ window.onload=function(){setTimeout(function() {
 }, 10*1000);}
 
 </script>
--->
+
 
 {% endblock %}
 {% block content %}
-<form name="match-color" method="POST">
+
 <div style="text-align: center;" class="w3-row">
   <!-- <div class="w3-col w3-container m6 l6">
    --> 
@@ -48,11 +48,11 @@ window.onload=function(){setTimeout(function() {
 
  
       <br/><br/><br/><br/><br/> 
-       <h3 style="visibility:hidden;"class="colorname">hsla color</h3> 
+       <h3 style="visibility:hidden;" class="colorname">hsla color</h3> >
 
-    <form>
+    <form method="POST" action="">
       <h6>HUE</h6>
-      <div class="hue"><input class="colorpickerinputs" name="hue" type="range" min="1" max="300" value="130"></div>
+      <div class="hue"><input class="colorpickerinputs" name="hue" type="range" min="1" max="360" value="180"></div>
 
       <h6>SATURATION</h6>
       <div class="satcolor" >
@@ -63,30 +63,28 @@ window.onload=function(){setTimeout(function() {
       <div class="light">
       <input class="colorpickerinputs" name="light" type="range" min="1" max="100" value="55">
       </div>
-      </form>
-
+      <br/> 
+      <br/>
+      <center>
+       <input type="submit" id="submitbutton" value="Next">
+       </center>
+    
 </center>
 <!--<div class="w3-col w3-container m6 l6">-->
 
 <!--Have to add the JS script  at the end of the body-->
+
+
+
+</form>
+
+
+
+</div>
 <script src="{{url_for('static', filename='colorpicker.js')}}"></script>
 
-<br/> 
-<br/>
-<center>
-<input name="Submit" id="submitbutton" type="submit" value="Next" >
-</center>
-</div>
-<!--
-valueElement:'valDisplay'
-HexValue: <span id='valDisplay'></span>
- --> 
- <!-- </div>
-  <div class="w3-col w3-container m6 l6" id="Question">  
-  </div>
- -->
- 
-</form>
+
+</body>
 
 
 {% endblock %}

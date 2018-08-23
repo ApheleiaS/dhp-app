@@ -9,7 +9,6 @@ class User(db.Model):
     eyesightr = db.Column(db.Float, nullable=False)
     gender = db.Column(db.String(64), nullable=False)
     profession = db.Column(db.String(64), nullable=False)
-    answers = db.relationship('Answer', backref='participant', lazy='dynamic')
     favorite_color = db.Column(db.Text)
 
     def __init__(self, username, email, age,eyesightl,eyesightr,gender,profession):
