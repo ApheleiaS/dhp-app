@@ -40,7 +40,6 @@ def login():
             
             # Start session with pid and uname from DB
             session["user_id"] = pid
-            print session
             return redirect('/index')
 
         except IntegrityError:
@@ -56,7 +55,6 @@ def login():
 @app.route('/logout')
 def logout():
     session.pop("user_id")
-    # print (session)
     return redirect('/login')
 
 
@@ -82,7 +80,6 @@ def index():
   #       redirect(url_for(survey, question_num="1"))
     message = "Hello"
     if "user_id" in session:
-        print "in session now"
         return render_template(
             'index.html', message=message, title="Survey Home",
             pid=session.get("user_id"))
@@ -104,7 +101,6 @@ def survey(question_num):
         dominant_color_chosen = "hue:" + hue + ",sat:" + sat + ",light:" + light
         # Answers(userid, surveynum(1,2,3), questionnum(1-10), answerstring)
         ans = Answer(user, int(question_num), image + "," + dominant_color_chosen)
-        print ans
         db.session.add(ans)
         db.session.commit()
 
