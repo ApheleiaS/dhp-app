@@ -1,11 +1,17 @@
 {% extends "base.html" %}
+{% block head %}
+
+<link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='page.css') }}">
+{% endblock%}
 
 {% block content %}
 <center>
 <div style="width:550px; border-width:2px;border-color:#FFFFFF; ">
 
 
-  Welcome Participant! Enter Your Information Here :
+  <h4> Welcome Participant! </h4> 
+  <br/> 
+  Enter Your Information Here :
   <form action="" method="post" name="login_participant">
       {{ form.hidden_tag() }}
       <p>
@@ -57,7 +63,7 @@
             <span style="color: red;">[{{ error }}]</span>
           {% endfor %}<br>
       </p>
-      <p><input type="submit" value="Sign In"></p>
+      <p><input class="survey_buttons" type="submit" value="Sign In"></p>
   </form>
   </div>
   </center>

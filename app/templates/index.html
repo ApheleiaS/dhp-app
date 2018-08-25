@@ -7,15 +7,15 @@
 
 {% block content %}
 <center> 
-
+<div style="width:550px;">
 Welcome Participant {{ pid }}:
-<br/> 
-{{message}}
-<br/>
+
+<br/><br/>
+<center>Instruction : The image on the left will disappear in 10 seconds. Look at it carefully and then set the box on the right as the most dominant color that you saw in the image using the slider buttons. </center> <br/><br/>
   <button class="survey_buttons" onclick="location.href='{{ url_for('survey',question_num=1) }}';">Begin Survey</button>
 <br/>
   <button class="survey_buttons" onclick="location.href='{{ url_for('logout') }}';">Logout</button>
-
+</div>
 </center>
 
 {% endblock %}
