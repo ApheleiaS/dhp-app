@@ -99,7 +99,7 @@ def survey(question_num):
         light = request.form.get('light')
         dominant_color_chosen = "hue:" + hue + ",sat:" + sat + ",light:" + light
         # Answers(userid, surveynum(1,2,3), questionnum(1-10), answerstring)
-        ans = Answer(1, int(question_num), image + "," + dominant_color_chosen)
+        ans = Answer(session["user_id"], int(question_num), image + "," + dominant_color_chosen)
         db.session.add(ans)
         db.session.commit()
 
