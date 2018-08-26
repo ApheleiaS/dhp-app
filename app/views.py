@@ -19,12 +19,6 @@ files_for_survey = [
 @app.route('/', methods=['GET', 'POST'])
 @app.route('/login', methods=['GET', 'POST'])
 def login():
-    if "user_id" in session:
-        if session["curr_question"]:
-            return redirect('/survey/'+session["curr_question"])
-        else:
-            return redirect('/index')
-
     form = ParticipantForm()
     if form.validate_on_submit():
 
