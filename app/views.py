@@ -47,7 +47,6 @@ def login():
 
 
     return render_template('login.html',
-                           title='Sign In',
                            form=form)
 
 
@@ -91,7 +90,7 @@ def index():
 def survey(question_num):
     if "user_id" not in session:
         return redirect('login')
-    user = User.query.get(session.get("user_id")).id
+    #user = User.query.get(session.get("user_id")).id
     image = files_for_survey[int(question_num) - 1]
     next_ques = str(int(question_num) + 1)
     if request.method == "POST":
@@ -100,7 +99,7 @@ def survey(question_num):
         light = request.form.get('light')
         dominant_color_chosen = "hue:" + hue + ",sat:" + sat + ",light:" + light
         # Answers(userid, surveynum(1,2,3), questionnum(1-10), answerstring)
-        ans = Answer(user, int(question_num), image + "," + dominant_color_chosen)
+        ans = Answer(1, int(question_num), image + "," + dominant_color_chosen)
         db.session.add(ans)
         db.session.commit()
 
