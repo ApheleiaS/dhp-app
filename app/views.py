@@ -53,7 +53,8 @@ def login():
 # put logout button on every page of the survey
 @app.route('/logout')
 def logout():
-    session.pop("user_id")
+    if 'user_id' in session:
+        session.pop("user_id")
     return redirect('/login')
 
 
